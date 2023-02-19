@@ -1,52 +1,79 @@
-// Get references to the carousel and its components
-const carousel = document.querySelector(".carousel");
-const carouselTrack = document.querySelector(".carousel-track");
-const carouselBoxes = Array.from(document.querySelectorAll(".carousel-box"));
-
-// Get references to the previous and next arrows
-const prevArrow = document.querySelector(".carousel-prev");
-const nextArrow = document.querySelector(".carousel-next");
-
-// Set the index of the currently displayed box to 0
-let currentIndex = 0;
-
-// Set the width of the carousel track to the total width of all boxes
-const boxWidth = carouselBoxes[0].getBoundingClientRect().width;
-carouselTrack.style.width = `${boxWidth * carouselBoxes.length}px`;
-
-// Move the carousel track to show the current box
-function moveCarousel() {
-  carouselTrack.style.transform = `translateX(${-currentIndex * boxWidth}px)`;
-}
-
-// Move the carousel track to show the next box
-function showNextBox() {
-  currentIndex++;
-  if (currentIndex > carouselBoxes.length - 1) {
-    currentIndex = 0;
+const slideList = [
+  {
+    img: "https://via.placeholder.com/400x250/5FB5F7/FFFFFF?text=Advantage+1",
+    alt: "Advantage 1",
+    header: "Advantage 1",
+    description: "Description for advantage 1"
+  },
+  {
+    img: "https://via.placeholder.com/400x250/F5768E/FFFFFF?text=Advantage+2",
+    alt: "Advantage 2",
+    header: "Advantage 2",
+    description: "Description for advantage 2"
+  },
+  {
+    img: "https://via.placeholder.com/400x250/F9B234/FFFFFF?text=Advantage+3",
+    alt: "Advantage 3",
+    header: "Advantage 3",
+    description: "Description for advantage 3"
+  },
+  {
+    img: "https://via.placeholder.com/400x250/8E3EF5/FFFFFF?text=Advantage+4",
+    alt: "Advantage 4",
+    header: "Advantage 4",
+    description: "Description for advantage 4"
   }
-  moveCarousel();
-}
+];
 
-// Move the carousel track to show the previous box
-function showPrevBox() {
-  currentIndex--;
-  if (currentIndex < 0) {
-    currentIndex = carouselBoxes.length - 1;
+const image = document.querySelector("img.slider");
+const header = document.querySelector("h2.slider");
+const description = document.querySelector("p.slider");
+const dots = [...document.querySelectorAll(".dots span")];
+const time = 5000;
+let active = 0;
+
+const changeDot = () => {
+  const activeDot = dots.findIndex(dot => dot.classList.contains("active"));
+  dots[activeDot].classList.remove("active");
+  dots[active].classList.add("active");
+};
+
+const changeSlide = () => {
+  active++;
+  if (active === slideList.length) {
+    active = 0;
   }
-  moveCarousel();
-}
+  image.src = slideList[active].img;
+  image.alt = slideList[active].alt;
+  header.textContent = slideList[active].header;
+  description.textContent = slideList[active].description;
+  changeDot();
+};
 
-// Set up event listeners for the previous and next arrows
-prevArrow.addEventListener("click", showPrevBox);
-nextArrow.addEventListener("click", showNextBox);
+let indexInterval = setInterval(changeSlide, time);
 
-// Move the carousel automatically every 5 seconds
-setInterval(showNextBox, 5000);
-// Get a reference to the register button
-const registerButton = document.querySelector(".register-button");
+const keyChangeSlide = e => {
+  if (e.keyCode === 37 || e.keyCode === 39) {
+    clearInterval(indexInterval);
+    e.keyCode === 37 ? active-- : active++;
+    if (active === slideList.length) {
+      active = 0;
+    } else if (active < 0) {
+      active = slideList.length - 1;
+    }
+    image.src = slideList[active].img;
+    image.alt = slideList[active].alt;
+    header.textContent = slideList[active].header;
+    description.textContent = slideList[active].description;
+    changeDot();
+    indexInterval = setInterval(changeSlide, time);
+  }
+};
 
-// Redirect the user to the SPU website when the register button is clicked
-registerButton.addEventListener("click", () => {
+window.addEventListener("keydown", keyChangeSlide);
+
+const button = document.querySelector("button.register-button");
+
+button.addEventListener("click", () => {
   window.location.href = "https://spu.edu.sy";
 });
