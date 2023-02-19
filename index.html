@@ -8,48 +8,54 @@
   </head>
   <body>
     <header>
-      <h1 class="red">SPU</h1>
-      <nav>
-        <a href="#">Home</a>
-        <a href="#">News</a>
-        <a href="#">Colleges</a>
-        <a href="#">Sign In</a>
+      <div class="header-left">
+        <h1 id="title">SPU</h1>
+      </div>
+      <nav class="header-right">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">News</a></li>
+          <li><a href="#">Colleges</a></li>
+          <li><a href="#">Sign In</a></li>
+        </ul>
       </nav>
     </header>
+
     <main>
-      <h2 class="blue">Why Choose SPU?</h2>
-      <div class="advantages-container">
-        <div class="advantages-box active">
-          <i class="fas fa-graduation-cap fa-5x green"></i>
-          <h3 class="green">Quality Education</h3>
-          <p>SPU provides high-quality education with experienced professors and modern facilities.</p>
+      <div class="advantages-carousel">
+        <div class="carousel-box current">
+          <div class="icon"><i class="fas fa-book"></i></div>
+          <h2>Top-Quality Education</h2>
+          <p>At SPU, we provide the highest quality education to our students, ensuring that they have the skills and knowledge they need to succeed in their careers.</p>
         </div>
-        <div class="advantages-box">
-          <i class="fas fa-users fa-5x blue"></i>
-          <h3 class="blue">Community</h3>
-          <p>Join a community of diverse and talented students who are passionate about learning.</p>
+        <div class="carousel-box">
+          <div class="icon"><i class="fas fa-users"></i></div>
+          <h2>Strong Community</h2>
+          <p>Our students and faculty form a tight-knit community that supports one another both inside and outside of the classroom.</p>
         </div>
-        <div class="advantages-box">
-          <i class="fas fa-book fa-5x red"></i>
-          <h3 class="red">Wide Range of Programs</h3>
-          <p>Choose from a variety of programs that match your interests and career goals.</p>
+        <div class="carousel-box">
+          <div class="icon"><i class="fas fa-globe"></i></div>
+          <h2>Global Perspective</h2>
+          <p>SPU is committed to providing our students with a global perspective, giving them the tools they need to succeed in an interconnected world.</p>
         </div>
-        <div class="advantages-box">
-          <i class="fas fa-globe fa-5x orange"></i>
-          <h3 class="orange">Global Opportunities</h3>
-          <p>Experience different cultures and expand your horizons with our study abroad programs.</p>
+        <div class="carousel-box">
+          <div class="icon"><i class="fas fa-graduation-cap"></i></div>
+          <h2>Excellent Career Prospects</h2>
+          <p>With a degree from SPU, our students are well-equipped to pursue successful careers in their chosen fields.</p>
         </div>
+        <div class="carousel-arrow prev"><i class="fas fa-chevron-left"></i></div>
+        <div class="carousel-arrow next"><i class="fas fa-chevron-right"></i></div>
       </div>
-      <button class="register-button">Register Now and Join SPU!</button>
-      <div class="arrow-container">
-        <i class="fas fa-arrow-left fa-3x prev"></i>
-        <i class="fas fa-arrow-right fa-3x next"></i>
+
+      <div class="register-container">
+        <button class="register-button">Register Now and Join SPU!</button>
       </div>
     </main>
+
     <footer>
-      <p>Copyrights to Mohamed Albalkhi &amp; Raghad Alhossny
-      </p>
+      <p>Copyrights to Mohamed Albalkhi &amp; Raghad Alhossny/p>
     </footer>
+
     <script src="script.js"></script>
   </body>
 </html>
